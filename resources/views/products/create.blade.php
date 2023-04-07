@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Product Image</label>
                         <input name="image" type="file" class="form-control">
-                      </div>
+                    </div>
                     <div class="form-group">
                         <label>Cost Price($) <span class="text-danger">*</span></label>
                         <input type="text" name="cost_price" class="form-control" placeholder="Product cost price">

@@ -97,9 +97,10 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::where('id', $id)->first();
+        $data['product'] = Product::findOrFail($id);
+        $data['categories'] = Category::all();
 
-        return view('products.edit', compact('product'));
+        return view('products.edit', $data);
     }
 
     /**
@@ -131,7 +132,7 @@ class ProductsController extends Controller
         }
 
         $this->storeOrUpdate($request,$id);
-
+        return redirect()->route('products.index')->with('success','Updated Success');
         flash('Product Updated Successfully')->success();
         return response()->json([
             'success' =>true,
@@ -179,7 +180,7 @@ class ProductsController extends Controller
                 'cost_price'     => $request->cost_price,
                 'retail_price'   => $request->retail_price,
                 'description'    => $request->description,
-                'status'         => $request->status == 'on' ? 1 : 0,
+                'status'         => $request->status ? 1 : 0,
             ]);
             $this->uploadFileWithResize($request->image, $products, 'image', 'images/products', 300, 280);
 

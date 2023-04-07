@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterUserController;
+use App\Models\AboutUs;
 use Illuminate\Support\Facades\Route;
 // use App\Htpp\Controllers\CategoriesController;
 
@@ -14,17 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('/login');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 // Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
 //     Route::get('/dashboard', function () {
 //         return view('dashboard');
 //     })->name('dashboard');
 // });
-//User
+//Admin
 Route::get('/logout', 'UsersController@logout')->name('users.logout');
 
 Route::middleware(['auth:sanctum'])->group(function(){
@@ -43,3 +43,18 @@ Route::middleware(['auth:sanctum'])->group(function(){
     //Contact Us
     Route::get('contact_us', 'ContactUsController@user_query')->name('contact_us');
 });
+
+Route::get('about-us', 'HomeController@aboutUs')->name('aboutUs');
+Route::get('category/{id}', 'HomeController@singleCategory')->name('single-category');
+
+//Cart Routes
+Route::post('/update-cart', 'CartController@updateCartAjax')->name('update-cart');
+Route::post('/remove-from-cart', 'CartController@removeFromCartAjax')->name('remove-from-cart');
+Route::get('/proceed-to-checkout', 'CartController@checkoutPage')->name('proceed-to-checkout')->middleware('auth');
+Route::post('/submit-order', 'CartController@submitOrder')->name('submit-order');
+
+Route::get('/thankyou', 'CartController@thankyou')->name('thankyou');
+
+Route::resource('register-users', RegisterUserController::class);
+Route::get('registerForm', 'RegisterUserController@registerUser')->name('registerForm');
+

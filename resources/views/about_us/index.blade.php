@@ -37,7 +37,7 @@
                         <th>#SL</th>
                         <th>Title</th>
                         <th>Image</th>
-                        <th>Description</th>
+                        <th width="45%">Description</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
