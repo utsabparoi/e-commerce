@@ -32,26 +32,14 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     //User
     Route::resource('users', UsersController::class);
-    
     //Category
     Route::resource('categories', CategoriesController::class);
     Route::get('/api/categories', 'CategoriesController@getCategoriesJson');
-    //Brand
-    Route::resource('brands', BrandsController::class);
-    Route::get('/api/brands', 'BrandsController@getBrandsJson');
-    //Size
-    Route::resource('sizes', SizesController::class);
-    Route::get('/api/sizes', 'SizesController@getSizesJson');
     //Product
     Route::resource('products', ProductsController::class);
     Route::get('/api/products', 'ProductsController@getProductsJson');
-    //Stock
-    Route::get('/stocks', 'StocksController@stock')->name('stock');
-    Route::post('/stocks', 'StocksController@stockSubmit')->name('stockSubmit');
-    Route::get('/stocks/history', 'StocksController@history')->name('stockHistory');
-
-    //Return product
-    Route::get('/return-products', 'ReturnProductsController@returnProduct')->name('returnProduct');
-    Route::post('/return-products', 'ReturnProductsController@returnProductSubmit')->name('returnProductSubmit');
-    Route::get('/return-products/history', 'ReturnProductsController@history')->name('returnProductHistory');
+    //About Us
+    Route::resource('about_us', AboutUsController::class);
+    //Contact Us
+    Route::get('contact_us', 'ContactUsController@user_query')->name('contact_us');
 });

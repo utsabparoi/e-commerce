@@ -48,7 +48,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password); //hash for encryption the password 
-
+        $user->user_type = $request->user_type;
         $user->save();
 
         flash('User created successfully')->success();
@@ -99,6 +99,7 @@ class UsersController extends Controller
         if ($request->has('password') && $request->password != null) {
             $user->password = Hash::make($request->password); //hash for encryption the password     
         }
+        $user->user_type = $request->user_type;
         
         $user->save();
 

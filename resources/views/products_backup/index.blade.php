@@ -5,12 +5,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Sizes</h1>
+          <h1 class="m-0">Products</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item active">Size list</li>
+            <li class="breadcrumb-item active">Product list</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -26,34 +26,47 @@
           <div class="card card-primary card-outline">
             <div class="card-body">
 
-              <a href="{{route('sizes.create')}}" class="btn btn-sm btn-primary">
-                <i class="fa fa-plus"></i> Add Size
+              <a href="{{route('products.create')}}" class="btn btn-sm btn-primary">
+                <i class="fa fa-plus"></i> Add Product
               </a><br><br>
-              <h4 class="card-title">Size list</h4>
+              <h4 class="card-title">Product list</h4>
               <table class="table table-bordered datatable">
                 <thead>
                     <tr>
                         <th>#SL</th>
-                        <th>Size</th>
+                        <th class="text-center">Image</th>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Category</th>
+
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @if($sizes)
-                    @foreach($sizes as $key => $size)
+                @if($products)
+                    @foreach($products as $key => $product)
                         <tr>
-                            <td>{{ ++$key }}</th>
-                            <td>{{ $size->size ?? ''}}</th>
+                            <td>{{ ++$key }}</td>
                             <td class="text-center">
-                                <a href="{{ route('sizes.edit', $size->id)}}" class="btn btn-sm btn-info">
+                              <img width="60px" height="64px" src="{{asset('storage/product_images/'. $product->image)}}">
+                            </td>
+                            <td>{{ $product->name ?? ''}}</td>
+                            <td>{{ $product->sku ?? ''}}</td>
+                            <td>{{ $product->category->name ?? ''}}</td>
+                            
+                            <td class="text-center">
+                                <a href="{{ route('products.show', $product->id)}}" class="btn btn-sm btn-primary">
+                                    <i class="fa fa-desktop"></i> Show
+                                </a>
+                                <a href="{{ route('products.edit', $product->id)}}" class="btn btn-sm btn-info">
                                     <i class="fa fa-edit"></i> Edit
                                 </a>
 
-                                <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="size-delete-{{$size->id}}">
+                                <a href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>
 
-                                <form id="size-delete-{{$size->id}}" action="{{ route('sizes.destroy', $size->id)}}" method="post">
+                                <form id="product-delete-{{$product->id}}" action="{{ route('products.destroy', $product->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                 </form>

@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class ContactUs extends Model
 {
     use HasFactory;
-
-    protected $appends = ['text'];
-
-    public function getTextAttribute(){
-        return $this->name;
-    }
+    // protected $table = 'contact_us';
+    // protected $guarded = [];
 }

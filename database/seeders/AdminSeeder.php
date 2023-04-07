@@ -18,10 +18,11 @@ class AdminSeeder extends Seeder
         
         DB::table('users')->insertOrIgnore([
             'name'		=>'admin',
-            // 'user_type'		=> 1,
+            'user_type'		=> 1,
             // 'status'		=> 1,
     		'email'		=>'admin@gmail.com',
     		'password'	=>Hash::make(12345678),
+            'created_at' =>now(),
         ]);
     }
 }

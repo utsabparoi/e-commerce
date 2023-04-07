@@ -38,7 +38,7 @@
                         <th>Name</th>
                         <th>SKU</th>
                         <th>Category</th>
-                        <th>Brand</th>
+
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -48,15 +48,15 @@
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-center">
-                              <img width="60px" height="64px" src="{{asset('storage/product_images/'. $product->image)}}">
+                                <img src="{{ asset($product->image) }}" alt="not found" width="60px">
                             </td>
                             <td>{{ $product->name ?? ''}}</td>
                             <td>{{ $product->sku ?? ''}}</td>
                             <td>{{ $product->category->name ?? ''}}</td>
-                            <td>{{ $product->brand->name ?? ''}}</td>
+
                             <td class="text-center">
                                 <a href="{{ route('products.show', $product->id)}}" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-desktop"></i> Show
+                                    <i class="fa fa-eye"></i> Show
                                 </a>
                                 <a href="{{ route('products.edit', $product->id)}}" class="btn btn-sm btn-info">
                                     <i class="fa fa-edit"></i> Edit
