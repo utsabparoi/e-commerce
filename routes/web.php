@@ -57,6 +57,6 @@ Route::get('/thankyou', 'CartController@thankyou')->name('thankyou');
 
 Route::resource('register-users', RegisterUserController::class);
 Route::get('/registerForm', 'RegisterUserController@registerUser')->name('registerForm');
-Route::get('/loginForm', 'RegisterUserController@loginUser')->name('loginForm');
+Route::get('/loginForm', 'RegisterUserController@loginUser')->name('loginForm')->middleware('auth');;
 Route::get('/userLogout', 'RegisterUserController@userLogout')->name('userLogout');
 

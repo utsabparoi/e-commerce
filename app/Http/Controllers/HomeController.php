@@ -5,20 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\Category;
 use App\Models\Product;
-use DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -26,10 +15,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Category::orderBy('id','asc')->get();
         $data['category_offers'] = Category::orderBy('id','asc')->paginate(4);
 
-        return view('frontend.layouts.front_template', $data);
+        return view('frontend.welcome', $data);
     }
 
 
@@ -67,7 +55,7 @@ class HomeController extends Controller
 
     public function singleCategory($id){
         // $cat_id = Category::find($id);
-        $data['categories'] = Category::orderBy('id','asc')->get();
+        // $data['categories'] = Category::orderBy('id','asc')->get();
         $data['category_info'] = Product::with('category')->where('status', 1)->where('category_id', $id)->get();
         $data['popular_categories'] = Category::orderBy('id','asc')->paginate(9);
         return view('frontend.pages.single-category', $data);

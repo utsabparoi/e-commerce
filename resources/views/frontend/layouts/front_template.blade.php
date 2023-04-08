@@ -24,10 +24,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Custom Theme files -->
     <link href="{{ asset('/frontend/css/style.css') }}" rel='stylesheet' type='text/css' />
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type='text/css'/> --}}
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <!-- js -->
     <script src="{{ asset('/frontend/js/jquery-1.11.1.min.js') }}"></script>
     <!-- //js -->
@@ -92,6 +93,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                     <li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
                     @if (Auth::guest())
                         <li><a href="{{ route('loginForm') }}"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                        <li><a href="{{ route('registerForm') }}"><i class="fa fa-arrow-right"
+                            aria-hidden="true"></i>Register</a></li>
                     @else
                         <li>
                             <a href="{{ route('userLogout') }}"><i class="fa fa-user" aria-hidden="true"></i>
@@ -100,8 +103,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                         </li>
                     @endif
 
-                    <li><a href="{{ route('registerForm') }}"><i class="fa fa-arrow-right"
-                                aria-hidden="true"></i>Register</a></li>
+
                     <li><a href="about.html"><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
                 </ul>
             </div>
@@ -155,7 +157,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-
 
     @yield("content")
 

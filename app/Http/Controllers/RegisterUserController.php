@@ -19,8 +19,7 @@ class RegisterUserController extends Controller
         return view('frontend.register-user.create');
     }
     public function loginUser(){
-        $categories = Category::get();
-        return view('frontend.register-user.login', compact('categories'));
+        return view('frontend.welcome');
     }
     public function registerUser(){
         $categories = Category::get();
@@ -34,11 +33,12 @@ class RegisterUserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|min:2|max:100',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|max:50|confirmed'
-        ]);
+        // ddd($request);
+        // $this->validate($request, [
+        //     'name' => 'required|min:2|max:100',
+        //     'email' => 'required|email|unique:users',
+        //     'password' => 'required|min:8|max:50|confirmed'
+        // ]);
 
         $user = new User();
         $user->name = $request->name;

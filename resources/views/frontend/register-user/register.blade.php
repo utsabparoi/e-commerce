@@ -19,19 +19,19 @@
                     @csrf
                     <div class="key">
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        <input type="text" value="Username" name="Username" onfocus="this.value = '';"
+                        <input type="text" value="Username" name="name" onfocus="this.value = '';"
                             onblur="if (this.value == '') {this.value = 'Username';}" required="">
                         <div class="clearfix"></div>
                     </div>
                     <div class="key">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
-                        <input type="text" value="Email" name="Email" onfocus="this.value = '';"
+                        <input type="text" value="Email" name="email" onfocus="this.value = '';"
                             onblur="if (this.value == '') {this.value = 'Email';}" required="">
                         <div class="clearfix"></div>
                     </div>
                     <div class="key">
                         <i class="fa fa-lock" aria-hidden="true"></i>
-                        <input type="password" value="Password" name="Password" onfocus="this.value = '';"
+                        <input type="password" value="Password" name="password" onfocus="this.value = '';"
                             onblur="if (this.value == '') {this.value = 'Password';}" required="">
                         <div class="clearfix"></div>
                     </div>
