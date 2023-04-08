@@ -36,6 +36,8 @@
                     <tr>
                         <th>#SL</th>
                         <th>Name</th>
+                        <th>Image</th>
+                        <th>Details</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -45,6 +47,10 @@
                         <tr>
                             <td>{{ ++$key }}</th>
                             <td>{{ $category->name ?? ''}}</th>
+                            <td>
+                                <img width="120" src="{{ asset($category->image) }}" alt="Not Found">
+                            </th>
+                            <td>{{ $category->details ?? ''}}</th>
                             <td class="text-center">
                                 <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-sm btn-info">
                                     <i class="fa fa-edit"></i> Edit

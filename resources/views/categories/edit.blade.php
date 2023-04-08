@@ -28,7 +28,7 @@
               <h5 class="card-title">Edit Category</h5><br>
 
               <!-- form start -->
-              <form role="form" action="{{ route('categories.update', $category->id) }}" method="post">
+              <form role="form" action="{{ route('categories.update', $category->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
@@ -38,6 +38,18 @@
                     @if($errors->has('name'))
                       <span class="text-danger">{{ $errors->first('name') }}</span>
                     @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Previous Image</label>
+                    <img src="{{ asset($category->image) }}" alt="{{$category->title}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Image</label>
+                    <input name="image" type="file" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Details</label>
+                    <input name="details" type="text" class="form-control" placeholder="Enter category description" value="{{$category->details}}">
                   </div>
                 </div>
                 <!-- /.card-body -->

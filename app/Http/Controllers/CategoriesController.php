@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Traits\FileSaver;
 use Illuminate\Http\Response;
 
 class CategoriesController extends Controller
 {
+    use FileSaver;
     /**
      * Display a listing of the resource.
      *
@@ -42,12 +44,15 @@ class CategoriesController extends Controller
             'name'  =>  'required|min:2|max:50|unique:categories'
         ]);
 
-        $category = new Category();
-        $category->name = $request->name;
-        $category->save();
+        try {
+            $this->storeOrUpdate($request);
+            flash('Category Created Successfully')->success();
+            return redirect()->route('categories.index')->with('success','Added Success');
 
-        flash('Category Created Successfully')->success();
-        return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+
+        }
     }
 
     /**
@@ -87,13 +92,13 @@ class CategoriesController extends Controller
             'name'  =>  'required|min:2|max:50|unique:categories,name,' . $id
         ]);
 
-        $category = Category::findOrFail($id);
-
-        $category->name = $request->name;
-        $category->save();
-
-        flash('Category Updated Successfully')->success();
-        return redirect()->route('categories.index');
+        try {
+            $this->storeOrUpdate($request,$id);
+            flash('Category Updated Successfully')->success();
+            return redirect()->route('categories.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
     /**
@@ -105,6 +110,10 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+        if(file_exists($category->image))
+        {
+            unlink($category->image);
+        }
         $category->delete();
 
         flash('Category Deleted Successfully')->success();
@@ -119,5 +128,22 @@ class CategoriesController extends Controller
             'success' => true,
             'data' => $categories
         ], Response::HTTP_OK);
+    }
+
+    private function storeOrUpdate($request, $id = null)
+    {
+        // ddd($request);
+        try {
+            $category = Category::updateOrCreate([
+                'id'             => $id,
+            ],[
+                'name'          => $request->name,
+                'details'    => $request->details,
+            ]);
+            $this->upload_file($request->image, $category, 'image', 'images/category');
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

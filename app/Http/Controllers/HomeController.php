@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use App\Models\Category;
+use App\Models\Product;
 use DB;
 
 class HomeController extends Controller
@@ -64,8 +65,12 @@ class HomeController extends Controller
         return view('frontend.pages.about_us', $data);
     }
 
-    public function singleCategory($id = null){
-        return 'test';
+    public function singleCategory($id){
+        // $cat_id = Category::find($id);
+        $data['categories'] = Category::orderBy('id','asc')->get();
+        $data['category_info'] = Product::with('category')->where('category_id', $id)->get();
+        $data['popular_categories'] = Category::orderBy('id','asc')->paginate(9);
+        return view('frontend.pages.single-category', $data);
     }
 }
 

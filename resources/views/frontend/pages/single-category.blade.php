@@ -1,193 +1,125 @@
-@extends('layouts.front_template')
+@extends('frontend.layouts.front_template')
 
 @section('content')
+    <!-- Carousel
+        ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="kitchen.html"><img class="first-slide" src="{{ asset('/frontend/images/ba.jpg') }}" alt="First slide"></a>
+
+            </div>
+            <div class="item">
+                <a href="care.html"> <img class="second-slide " src="{{ asset('/frontend/images/ba1.jpg') }}" alt="Second slide"></a>
+
+            </div>
+            <div class="item">
+                <a href="hold.html"><img class="third-slide " src="{{ asset('/frontend/images/ba2.jpg') }}" alt="Third slide"></a>
+
+            </div>
+        </div>
+
+    </div><!-- /.carousel -->
+
     <!--content-->
-    <div class="content-top ">
+    <div class="kic-top ">
         <div class="container ">
+            <div class="kic ">
+                <h3>Popular Categories</h3>
+
+            </div>
+            @foreach ($popular_categories as $category)
+                <div class="col-md-4 kic-top1">
+                    <a href="{{ route('single-category', $category->id)}}">
+                        <img src="{{ asset($category->image) }}" style="height: 140px !important" class="img-responsive" alt="">
+                    </a>
+                    <h6 style="font-weight: bold">{{ $category->name }}</h6>
+                    <p>{!! $category->details !!}</p>
+                </div>
+            @endforeach
+
+
+        </div>
+    </div>
+
+    <!--content-->
+    <div class="product">
+        <div class="container">
             <div class="spec ">
-                <h3>Category Page</h3>
+                <h3>Products</h3>
                 <div class="ser-t">
                     <b></b>
                     <span><i></i></span>
                     <b class="line"></b>
                 </div>
             </div>
+            <div class=" con-w3l agileinf">
+                @foreach ($category_info as $item)
+                    <div class="col-md-3 pro-1">
+                        <div class="col-m">
+                            <a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+                                <img src="{{ asset($item->image) }}" class="img-responsive" alt="">
+                            </a>
+                            <div class="mid-1">
+                                <div class="women">
+                                    <h6><a href="single.html">{{ $item->name }}</a>(500 g)</h6>
+                                </div>
+                                <div class="mid-2">
+                                    <p><label>{{ $item->retail_price }}tk</label><em class="item_price">{{ $item->cost_price }}tk</em></p>
+                                    <div class="block">
+                                        <div class="starbox small ghosting"> </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="add">
+                                    <button class="btn btn-danger my-cart-btn my-cart-b" data-id="24" data-name="Wheat"
+                                        data-summary="summary 24" data-price="6.00" data-quantity="1"
+                                        data-image="images/of24.png">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
-    <main>
-        <div class="container inner-cont">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="inner-sec-title-exception text-center">
-                        <h2>{{ $department->department_name }}</h2>
-                        <!-- <span class="divider"></span> -->
-                    </div>
+    {{-- Product Modal --}}
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                {{-- Department Searche Options --}}
-                {{-- <div class="col-sm-6 dept">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Select Department</label>
-                        </div>
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">Vascular Surgery</option>
-                            <option value="2">Thoracic Surgery</option>
-                            <option value="3">Pain Clinic</option>
-                        </select>
-                    </div>
-
-                </div> --}}
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-6 department">
-                    <img src="{{ asset($department->department_image) }}" style="max-height: 450px;"
-                        alt="{{ asset($department->department_name) }}">
-                </div>
-                <div class="col-sm-6 custom_entity">
-                    <p class="text-justify ">
-                        {!! $department->department_description !!}
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="dept-doc">
-                    <h5>Consultation & Appointment</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <!--Start single item-->
-                    <div class="single-item text-center team-block-two">
-                        <div class="inner-box  ">
-                            <div class="image-box">
-                                <figure class="image"><a href="#"><img
-                                            src="{{ asset('frontend/images/doctors/team-4.jpg') }}" alt=""></a>
-                                </figure>
-                                <!--<ul class="social-links">-->
-                                <!--    <li><a href="#">Appointment</a></li>-->
-                                <!--    <li><a href="#">Doctor Details</a></li>-->
-                                <!--</ul>-->
-                            </div>
-                            <div class="info-box">
-                                <h5 class="name"><a href="#">Dr. Md Abdul Halim</a></h5>
-                                <span class="designation">Consultant</span>
-                                <p class="text-center info-box-dept-name">Internal Medicine</p>
-                                <div>
-                                    <a href="#" class="badge badge-secondary">Sat</a>
-                                    <a href="#" class="badge badge-secondary">Sun</a>
-                                    <a href="#" class="badge badge-danger">Tue</a>
-                                    <a href="#" class="badge badge-secondary">Wed</a>
-                                    <a href="#" class="badge badge-secondary">Thu</a>
-                                </div>
-                                <p class="app-time text-center">6:00 PM to 8:00 PM</p>
-                                <div class="text-center mt-2">
-                                    <a href="https://web.asgaralihospital.com/appointment"><button type="button"
-                                            class="btn btn-primary btn-sm">Appointment</button></a>
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target=".bd-example-modal-lg">Doctor Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item-->
-                </div>
-                <div class="col-sm-3">
-                    <!--Start single item-->
-                    <div class="single-item text-center team-block-two">
-                        <div class="inner-box  ">
-                            <div class="image-box">
-                                <figure class="image"><a href="#"><img
-                                            src="{{ asset('frontend/images/doctors/team-3.jpg') }}" alt=""></a>
-                                </figure>
-                                <!--<ul class="social-links">-->
-                                <!--    <li><a href="#">Appointment</a></li>-->
-                                <!--    <li><a href="#">Doctor Details</a></li>-->
-                                <!--</ul>-->
-                            </div>
-                            <div class="info-box">
-                                <h5 class="name"><a href="#">Dr. Samira Yasmeen Ahmed</a></h5>
-                                <span class="designation">Consultant</span>
-                                <p class="text-center info-box-dept-name">Internal Medicine</p>
-                                <div>
-                                    <a href="#" class="badge badge-secondary">Sat</a>
-                                    <a href="#" class="badge badge-secondary">Sun</a>
-                                    <a href="#" class="badge badge-danger">Mon</a>
-                                    <a href="#" class="badge badge-secondary">Tue</a>
-                                    <a href="#" class="badge badge-secondary">Wed</a>
-                                    <a href="#" class="badge badge-secondary">Thu</a>
-                                </div>
-                                <p class="app-time text-center">6:00 PM to 8:00 PM</p>
-                                <div class="text-center mt-2">
-                                    <a href="https://web.asgaralihospital.com/appointment"><button type="button"
-                                            class="btn btn-primary btn-sm">Appointment</button></a>
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target=".bd-example-modal-lg">Doctor Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item-->
-                    <!-- Modal -->
-
-                    <div class="doc-profile-modal modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Dr. Md. Jilhaj Uddin
-                                    </h5> -->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <img class="doc-img" src="{{ asset('frontend/images/doctors/demo-doc.png') }}"
-                                                alt="">
-                                            <h3 class="doc-name">Dr. Md. Jilhaj Uddin</h3>
-                                        </div>
-                                        <div class="col-sm-8 doc-details">
-                                            <p>MBBS, BCS (Health)</p>
-                                            <p>MS (Cardiovascular)</p>
-                                            <p>Specialist – Vascular Surgery</p>
-                                            <p><img src="{{ asset('frontend/images/footer/hc-icon.png') }}"
-                                                    alt=""> Dr. Md. Jilhaj Uddin obtained his MBBS degree from
-                                                Rajshahi Medical College.</p>
-                                            <p><img src="{{ asset('frontend/images/footer/hc-icon.png') }}"
-                                                    alt=""> He received Trainings on Surgery from ‘Dhaka Medical
-                                                College Hospital’, ‘Shaheed Suhrawardy Medical College Hospital’ and
-                                                ‘BSMMU’.</p>
-                                            <p><img src="{{ asset('frontend/images/footer/hc-icon.png') }}"
-                                                    alt=""> Dr. Jilhaj successfully completed his MS degree in
-                                                ‘Cardiovascular Surgery’ from ‘National Institute of Cardiovascular
-                                                Diseases’ (NICVD) and joined in Govt. service through BCS Health.</p>
-                                            <p><img src="{{ asset('frontend/images/footer/hc-icon.png') }}"
-                                                    alt=""> Later he worked in Vascular Surgery Department of NICVD
-                                                and enriched himself with Advanced Training on Vascular Surgery, LASER and
-                                                Endovascular Intervention till June, 2020.</p>
-                                            <!-- <p><img src="images/footer/hc-icon.png" alt=""> Presently Dr. Md. Jilhaj Uddin is at Asgar Ali Hospital as Specialist-Vascular Surgery and serving patients regularly.</p> -->
-                                        </div>
+                <div class="modal-body modal-spa">
+                        <div class="col-md-5 span-2">
+                                    <div class="item">
+                                        <img src="images/of24.png" class="img-responsive" alt="">
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="https://web.asgaralihospital.com/appointment"><button type="button"
-                                            class="btn btn-primary btn-sm">Make An Appointment</button></a>
-                                    <button type="button" class="btn btn-secondary doc-close"
-                                        data-dismiss="modal">Close</button>
-
-                                </div>
-                            </div>
                         </div>
+                        <div class="col-md-7 span-1 ">
+                            <h3>Wheat(500 g)</h3>
+                            <p class="in-para"> There are many variations of passages of Lorem Ipsum.</p>
+                            <div class="price_single">
+                              <span class="reducedfrom "><del>$2.00</del>$1.50</span>
+
+                             <div class="clearfix"></div>
+                            </div>
+                            <h4 class="quick">Quick Overview:</h4>
+                            <p class="quick_desc"> Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                             <div class="add-to">
+                                   <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="24" data-name="Wheat" data-summary="summary 24" data-price="1.50" data-quantity="1" data-image="images/of24.png">Add to Cart</button>
+                                </div>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <!-- Doctor Details Modal Ends -->
                 </div>
             </div>
         </div>
-    </main>
-    <footer>
-        @include('frontend.layout.footer')
-    </footer>
 @endsection
