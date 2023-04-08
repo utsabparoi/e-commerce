@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -17,9 +18,13 @@ class RegisterUserController extends Controller
     {
         return view('frontend.register-user.create');
     }
+    public function loginUser(){
+        $categories = Category::get();
+        return view('frontend.register-user.login', compact('categories'));
+    }
     public function registerUser(){
-
-        return view('frontend.register-user.register');
+        $categories = Category::get();
+        return view('frontend.register-user.register', compact('categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -43,10 +48,10 @@ class RegisterUserController extends Controller
         $user->save();
 
         flash('User created successfully')->success();
-        return redirect('/');
+        return redirect()->route('loginForm');
     }
 
-    public function logout(){
+    public function userLogout(){
         Auth::logout();
         return redirect('/');
     }

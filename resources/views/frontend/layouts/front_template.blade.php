@@ -91,10 +91,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                 <ul class="card">
                     <li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
                     @if (Auth::guest())
-                        <li><a href="{{ route('register-users.create') }}"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                        <li><a href="{{ route('loginForm') }}"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
                     @else
                         <li>
-                            <a href="{{ route('logout') }}"><i class="fa fa-user" aria-hidden="true"></i>
+                            <a href="{{ route('userLogout') }}"><i class="fa fa-user" aria-hidden="true"></i>
                                 {{ __('Sign out') }}
                             </a>
                         </li>
@@ -214,7 +214,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                 </ul>
                 <div class=" address">
                     <div class="col-md-4 fo-grid1">
-                        <p><i class="fa fa-home" aria-hidden="true"></i>12K Street , 45 Building Road Canada.</p>
+                        <p><i class="fa fa-home" aria-hidden="true"></i>Notunbazar , Vatara Dhaka 1212</p>
                     </div>
                     <div class="col-md-4 fo-grid1">
                         <p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>
@@ -274,7 +274,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
                 $.ajax({
                     type: 'POST',
-                    url: "#",
+                    url: "{{ route('update-cart') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "product_id": pid,
@@ -295,7 +295,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
                 $.ajax({
                     type: 'POST',
-                    url: "#",
+                    url: "{{ route('remove-from-cart') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "product_id": pid,
@@ -308,7 +308,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 
             $(document).on('click', ".proceed-to-checkout", function() {
-                window.location.href = "#"
+                window.location.href = "{{ route('proceed-to-checkout') }}"
             })
 
         });

@@ -68,7 +68,7 @@ class HomeController extends Controller
     public function singleCategory($id){
         // $cat_id = Category::find($id);
         $data['categories'] = Category::orderBy('id','asc')->get();
-        $data['category_info'] = Product::with('category')->where('category_id', $id)->get();
+        $data['category_info'] = Product::with('category')->where('status', 1)->where('category_id', $id)->get();
         $data['popular_categories'] = Category::orderBy('id','asc')->paginate(9);
         return view('frontend.pages.single-category', $data);
     }
