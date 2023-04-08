@@ -121,7 +121,7 @@ class AboutUsController extends Controller
                 'title'          => $request->title,
                 'description'    => $request->description,
             ]);
-            $this->uploadFileWithResize($request->image, $about_us, 'image', 'images/about_us', 450, 300);
+            $this->upload_file($request->image, $about_us, 'image', 'images/about_us');
 
         } catch (\Throwable $th) {
             throw $th;

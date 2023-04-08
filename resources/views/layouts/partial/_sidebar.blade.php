@@ -64,7 +64,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('contact_us') }}" class="nav-link {{ request()->is('contact_us*') ? 'active' : '' }}">
+                <a href="{{ route('contact_list') }}" class="nav-link {{ request()->is('contact_us*') ? 'active' : '' }}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>Contact Us</p>
                 </a>

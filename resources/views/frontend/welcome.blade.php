@@ -2,8 +2,9 @@
 
 @section('content')
     <!---->
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+
     <div data-vide-bg="video/video">
         <div class="container">
             <div class="banner-info">
@@ -28,7 +29,7 @@
     <div class="content-top ">
         <div class="container ">
             <div class="spec ">
-                <h3>@lang('common.special_offer')</h3>
+                <h3>Special Offers</h3>
                 <div class="ser-t">
                     <b></b>
                     <span><i></i></span>

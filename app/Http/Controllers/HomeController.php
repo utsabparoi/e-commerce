@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $data['categories'] = Category::orderBy('id','asc')->get();
         $data['category_offers'] = Category::orderBy('id','asc')->paginate(4);
-        $data['about_us'] = AboutUs::first();
+
         return view('frontend.layouts.front_template', $data);
     }
 
@@ -59,7 +59,9 @@ class HomeController extends Controller
 // }
 
     public function aboutUs(){
-        return('test');
+        $data['categories'] = Category::orderBy('id','asc')->get();
+        $data['about_us'] = AboutUs::first();
+        return view('frontend.pages.about_us', $data);
     }
 
     public function singleCategory($id = null){

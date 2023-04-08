@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RegisterUserController;
-use App\Models\AboutUs;
 use Illuminate\Support\Facades\Route;
 // use App\Htpp\Controllers\CategoriesController;
 
@@ -40,10 +37,13 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/api/products', 'ProductsController@getProductsJson');
     //About Us
     Route::resource('about_us', AboutUsController::class);
-    //Contact Us
-    Route::get('contact_us', 'ContactUsController@user_query')->name('contact_us');
+    //User Contact info List
+    Route::get('contact-list', 'ContactListController@index')->name('contact_list');
+    Route::delete('contact/{id}', 'ContactListController@destroy')->name('delete_contact');
 });
 
+//User Contact to Admin
+Route::resource('user_contact', ContactUsController::class);
 Route::get('about-us', 'HomeController@aboutUs')->name('aboutUs');
 Route::get('category/{id}', 'HomeController@singleCategory')->name('single-category');
 
@@ -55,6 +55,6 @@ Route::post('/submit-order', 'CartController@submitOrder')->name('submit-order')
 
 Route::get('/thankyou', 'CartController@thankyou')->name('thankyou');
 
-Route::resource('register-users', RegisterUserController::class);
-Route::get('registerForm', 'RegisterUserController@registerUser')->name('registerForm');
+// Route::resource('register-users', RegisterUserController::class);
+Route::get('/registerForm', 'RegisterUserController@registerUser')->name('registerForm');
 

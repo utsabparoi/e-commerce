@@ -46,8 +46,6 @@ class RegisterUserController extends Controller
         return redirect('/');
     }
 
-
-
     public function logout(){
         Auth::logout();
         return redirect('/');

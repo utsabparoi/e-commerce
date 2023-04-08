@@ -1,19 +1,19 @@
 @extends('layouts.front_template')
 
 @section('content')
-<!--content-->
-<div class="content-top ">
-    <div class="container ">
-        <div class="spec ">
-            <h3>Category Page</h3>
-            <div class="ser-t">
-                <b></b>
-                <span><i></i></span>
-                <b class="line"></b>
+    <!--content-->
+    <div class="content-top ">
+        <div class="container ">
+            <div class="spec ">
+                <h3>Category Page</h3>
+                <div class="ser-t">
+                    <b></b>
+                    <span><i></i></span>
+                    <b class="line"></b>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <main>
         <div class="container inner-cont">
             <div class="row">
@@ -42,7 +42,8 @@
             <hr>
             <div class="row">
                 <div class="col-sm-6 department">
-                    <img src="{{ asset($department->department_image) }}" style="max-height: 450px;" alt="{{ asset($department->department_name) }}">
+                    <img src="{{ asset($department->department_image) }}" style="max-height: 450px;"
+                        alt="{{ asset($department->department_name) }}">
                 </div>
                 <div class="col-sm-6 custom_entity">
                     <p class="text-justify ">
@@ -136,7 +137,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Dr. Md. Jilhaj Uddin
-                                </h5> -->
+                                    </h5> -->
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
