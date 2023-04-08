@@ -82,14 +82,14 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <body>
     {{-- <a href="offer.html"><img src="{{ asset('/frontend/images/download.png') }}" class="img-head" alt=""></a> --}}
-    <div class="header">
+    <div class="header" style="background-color: #353535;margin-top:0px">
 
         <div class="container">
             <div class="logo">
                 <h1><a href="{{ url('/') }}"><b>T<br>H<br>E</b>Big Store<span>The Best Supermarket</span></a></h1>
             </div>
             <div class="head-t">
-                <ul class="card">
+                <ul class="card"  style="color:black !important">
                     <li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
                     @if (Auth::guest())
                         <li><a href="{{ route('loginForm') }}"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
@@ -121,7 +121,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" >
                         <ul class="nav navbar-nav ">
                             <li class=" active"><a href="{{ url('/') }}" class="hyper "><span>Home</span></a></li>
 
@@ -151,7 +151,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                     <span class="fa fa-shopping-cart my-cart-icon"><span
                             class="badge badge-notify my-cart-badge"></span></span>
                 </div>
-                <div class="clearfix"></div>
+                <div class="clearfix" style="background-color: rgb(209, 209, 209)"></div>
             </div>
 
         </div>
@@ -215,7 +215,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                 </ul>
                 <div class=" address">
                     <div class="col-md-4 fo-grid1">
-                        <p><i class="fa fa-home" aria-hidden="true"></i>Notunbazar , Vatara Dhaka 1212</p>
+                        <p><i class="fa fa-home" aria-hidden="true"></i>Notunbazar , Vatara, Dhaka 1212</p>
                     </div>
                     <div class="col-md-4 fo-grid1">
                         <p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>
