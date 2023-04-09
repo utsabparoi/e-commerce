@@ -49,17 +49,17 @@
                     <div class="panel-body" style="padding: 15px;">
                         @php $order_total = 0; @endphp
                         @foreach($cartdata as $productinfo)
-                        @php $order_total+=$productinfo->product_total_price @endphp
+                        @php $order_total+=$productinfo->retail_price @endphp
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-3">
-                                <img class="img-responsive" src="{{ asset('uploads/products/').'/'.$productinfo->product_row_id.'/thumbnail/'.$productinfo->product_image }}" width="50px" />
+                                <img class="img-responsive" src="{{ asset($productinfo->image) }}" width="50px" />
                             </div>
                             <div class="col-sm-6 col-xs-6">
-                                <div class="col-xs-12" name="product_name">{{ $productinfo->product_name }}</div>
+                                <div class="col-xs-12" name="product_name">{{ $productinfo->name }}</div>
                                 <div class="col-xs-12"><small>Quantity:<span>{{ $productinfo->product_qty }}</span></small></div>
                             </div>
                             <div class="col-sm-3 col-xs-3 text-right">
-                                <h6><span>৳ </span>{{ $productinfo->product_total_price }}</h6>
+                                <h6><span>৳ </span>{{ $productinfo->retail_price }}</h6>
                             </div>
                         </div>
                         @endforeach
