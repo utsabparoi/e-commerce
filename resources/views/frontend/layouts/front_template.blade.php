@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 
 <head>
-    <title>Big store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template| Home :: w3layouts
+    <title>The Big store
     </title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,8 +17,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="keywords"
         content="Big store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){
+            window.scrollTo(0,1);
+        }
+    </script>
     <!-- //for-mobile-apps -->
     <link href="{{ asset('/frontend/css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
     <!-- Custom Theme files -->

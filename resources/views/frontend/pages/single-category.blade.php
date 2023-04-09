@@ -84,9 +84,9 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="add">
-                                    <button class="btn btn-danger my-cart-btn my-cart-b" data-id="24" data-name="Wheat"
-                                        data-summary="summary 24" data-price="6.00" data-quantity="1"
-                                        data-image="images/of24.png">Add to Cart</button>
+                                    <button class="btn btn-danger my-cart-btn my-cart-b" data-id="{{ $item->id }}" data-name="{{$item->name}}"
+                                        data-summary="summary 24" data-price="{{ $item->cost_price }}" data-quantity="1"
+                                        data-image="{{ asset($item->image) }}">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -117,9 +117,9 @@
                                         <h4 class="quick">Quick Overview:</h4>
                                         <p class="quick_desc">{{ $item->description }}</p>
                                         <div class="add-to">
-                                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="24"
-                                                data-name="Wheat" data-summary="summary 24" data-price="1.50"
-                                                data-quantity="1" data-image="images/of24.png">Add to Cart</button>
+                                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="{{ $item->id }}"
+                                                data-name="{{$item->name}}" data-summary="summary 24" data-price="{{ $item->cost_price }}"
+                                                data-quantity="1" data-image="{{ asset($item->image) }}">Add to Cart</button>
                                         </div>
                                     </div>
                                     <div class="clearfix"> </div>
