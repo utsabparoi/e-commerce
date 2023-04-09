@@ -29,14 +29,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="{{ asset('/frontend/css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
     <!-- Custom Theme files -->
     <link href="{{ asset('/frontend/css/style.css') }}" rel='stylesheet' type='text/css' />
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type='text/css'/> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+
+    <script src="{{ asset('/frontend/js/jquery-1.11.1.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <!-- js -->
-    <script src="{{ asset('/frontend/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('/frontend/js/jquery.vide.min.js') }}"></script>
     <!-- //js -->
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="{{ asset('/frontend/js/move-top.js') }}"></script>
@@ -129,10 +131,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" >
                         <ul class="nav navbar-nav ">
-                            <li class=" active"><a href="{{ url('/') }}" class="hyper "><span>Home</span></a></li>
+                            <li ><a href="{{ url('/') }}" class="hyper "><span style="color: black !important">Home</span></a></li>
 
-                            <li class="dropdown ">
-								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Category<b class="caret"></b></span></a>
+                            <li class="dropdown " >
+								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span style="color: black !important">Category<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
 									<div class="row">
                                         @foreach ($categories as $category)
@@ -146,8 +148,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</ul>
 							</li>
-                            <li><a href="{{ route('user_contact.create') }}" class="hyper"><span>Contact Us</span></a></li>
-                            <li><a href="{{ route('aboutUs') }}" class="hyper"><span>About Us</span></a></li>
+                            <li class="nav-link {{ request()->is('user_contact*') ? 'active' : '' }}"><a href="{{ route('user_contact.create') }}" class="hyper"><span style="color: black !important">Contact Us</span></a></li>
+                            <li class="nav-link {{ request()->is('about_us*') ? 'active' : '' }}"><a href="{{ route('aboutUs') }}" class="hyper"><span style="color: black !important">About Us</span></a></li>
 
                         </ul>
                     </div>
@@ -157,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="fa fa-shopping-cart my-cart-icon"><span
                             class="badge badge-notify my-cart-badge"></span></span>
                 </div>
-                <div class="clearfix" style="background-color: rgb(209, 209, 209)"></div>
+                <div class="clearfix" style="background-color: rgb(209, 209, 209);border:1px solid;"></div>
             </div>
 
         </div>
@@ -172,9 +174,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-md-3 footer-grid">
                 <h3>About Us</h3>
-                <p>Nam libero tempore, cum soluta nobis est eligendi
-                    optio cumque nihil impedit quo minus id quod maxime
-                    placeat facere possimus.</p>
+                <p>The Big store is not a online shopping mall. This is the way of your daily life to full fill your all productive need.</p>
             </div>
             <div class="col-md-3 footer-grid ">
                 <h3>Menu</h3>
@@ -209,9 +209,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="footer-bottom">
                 <h2><a href="{{ url('/') }}"><b>T<br>H<br>E</b>Big Store<span>The Best Supermarket</span></a>
                 </h2>
-                <p class="fo-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris</p>
+                <p class="fo-para">The Big store is not a online shopping mall. This is the way of your daily life to full fill your all productive need.</p>
                 <ul class="social-fo">
                     <li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

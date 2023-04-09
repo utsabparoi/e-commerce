@@ -29,10 +29,7 @@
                 </div>
                 <div class="col-md-7 contact-left">
                     <h4>Contact Information</h4>
-                    <p> Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                        aut odit aut fugit, sed quia consequuntur magni dolores eos
-                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-                        est, qui dolorem ipsum quia dolor sit amet, consectetur</p>
+                    <p> You can cotact through these given email, phone number and you have any queries or advise please feel free to contact by this message box and submit it.</p>
                     <ul class="contact-list">
                         <li> <i class="fa fa-map-marker" aria-hidden="true"></i> Notunbazar,Vatara, Dhaka-1212</li>
                         <li><i class="fa fa-envelope" aria-hidden="true"></i><a

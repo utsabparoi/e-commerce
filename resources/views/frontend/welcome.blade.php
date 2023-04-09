@@ -1,6 +1,6 @@
 @extends('frontend.layouts.front_template')
 @section('content')
-    {{-- <div data-vide-bg="video/video">
+    <div data-vide-bg="video/video">
         <div class="container">
             <div class="banner-info">
                 <h3>It is a long established fact that a reader will be distracted by
@@ -14,17 +14,21 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
+    <script>
+        window.jQuery || document.write('<script src="{{ asset('/frontend/js/vendor/jquery-1.11.1.min.js') }}"><\/script>')
+    </script>
+
     <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        ================================================== -->
+    {{-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner text-center" role="listbox">
             <div class="item active">
                 <a href="kitchen.html"><img class="first-slide" src="{{ asset('/frontend/images/ba.jpg') }}"
                         alt="First slide"></a>
@@ -42,19 +46,19 @@
             </div>
         </div>
 
-    </div><!-- /.carousel -->
+    </div> --}}
 
     <!--content-->
     <div class="content-top ">
         <div class="container ">
             <div class="spec ">
-                <h3>Special Offers</h3>
+                <h3>New Arrivals</h3>
                 <div class="ser-t">
                     <b></b>
                     <span><i></i></span>
                     <b class="line"></b>
                 </div>
-            </div>  
+            </div>
             <div class="tab-head ">
                 <nav class="nav-sidebar">
                     <ul class="nav tabs ">
@@ -66,115 +70,81 @@
                 <div class=" tab-content tab-content-t ">
                     <div class="tab-pane active text-style" id="tab1">
                         <div class=" con-w3l">
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-                                        <img src="images/of.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Moong</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$2.00</label><em class="item_price">$1.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
+                            @foreach ($new_arrivals as $item)
+                                <div class="col-md-3 m-wthree">
+                                    <div class="col-m">
+                                        <a href="#" data-toggle="modal" data-target="#myModal" class="offer-img">
+                                            <img src="{{ asset($item->image) }}" class="img-responsive" alt="">
+                                            {{-- <div class="offer">
+                                                <p><span>Offer</span></p>
+                                            </div> --}}
+                                        </a>
+                                        <div class="mid-1">
+                                            <div class="women">
+                                                <h6><a href="single.html">{{ $item->name }}</a></h6>
                                             </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b " data-id="1"
-                                                data-name="Moong" data-summary="summary 1" data-price="1.50"
-                                                data-quantity="1" data-image="images/of.png">Add to Cart</button>
-                                        </div>
+                                            <div class="mid-2">
+                                                <p><label>{{ $item->retail_price }}</label></p>
+                                                <div class="block">
+                                                    <div class="starbox small ghosting"> </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="add">
+                                                <button class="btn btn-danger my-cart-btn my-cart-b "
+                                                    data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                                    data-summary="summary 1" data-price="{{ $item->retail_price }}"
+                                                    data-quantity="1" data-image="{{ asset($item->image) }}">Add to
+                                                    Cart</button>
+                                            </div>
 
+                                        </div>
                                     </div>
+
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal2" class="offer-img">
-                                        <img src="images/of1.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Sunflower Oil</a>(5 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$10.00</label><em class="item_price">$9.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
+                                {{-- Product Modal --}}
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content modal-info">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="2"
-                                                data-name="Sunflower Oil" data-summary="summary 2" data-price="9.00"
-                                                data-quantity="1" data-image="images/of1.png">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal3" class="offer-img">
-                                        <img src="images/of2.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Kabuli Chana</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$3.00</label><em class="item_price">$2.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
+                                            <div class="modal-body modal-spa">
+                                                <div class="col-md-5 span-2">
+                                                    <div class="item">
+                                                        <img src="{{ asset($item->image) }}" class="img-responsive"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7 span-1 ">
+                                                    <h3>{{ $item->name }}</h3>
+                                                    <p class="in-para"> There are many variations of this product.
+                                                    </p>
+                                                    <div class="price_single">
+                                                        <span
+                                                            class="reducedfrom "><del>{{ $item->retail_price }}tk</del>{{ $item->cost_price }}tk</span>
+
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <h4 class="quick">Quick Overview:</h4>
+                                                    <p class="quick_desc">{{ $item->description }}</p>
+                                                    <div class="add-to">
+                                                        <button class="btn btn-danger my-cart-btn my-cart-btn1 "
+                                                            data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                                            data-summary="summary 24" data-price="{{ $item->cost_price }}"
+                                                            data-quantity="1" data-image="{{ asset($item->image) }}">Add to
+                                                            Cart</button>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"> </div>
                                             </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="3"
-                                                data-name="Kabuli Chana" data-summary="summary 3" data-price="2.00"
-                                                data-quantity="1" data-image="images/of2.png">Add to Cart</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal4" class="offer-img">
-                                        <img src="images/of3.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Soya Chunks</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="4"
-                                                data-name="Soya Chunks" data-summary="summary 4" data-price="3.50"
-                                                data-quantity="1" data-image="images/of3.png">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                {{-- Modal End --}}
+                            @endforeach
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -271,209 +241,23 @@
     <div class="product">
         <div class="container">
             <div class="spec ">
-                <h3>Special Offers</h3>
+                <h3>Popular Categories</h3>
                 <div class="ser-t">
                     <b></b>
                     <span><i></i></span>
                     <b class="line"></b>
                 </div>
             </div>
-            <div class=" con-w3l">
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-                            <img src="images/of16.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html">Moisturiser</a>(500 g)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$7.00</label><em class="item_price">$6.00</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add add-2">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="6.00" data-quantity="1"
-                                    data-image="images/of16.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
+            @foreach ($popular_categories as $category)
+                <div class="col-md-4 kic-top1">
+                    <a href="{{ route('single-category', $category->id) }}">
+                        <img src="{{ asset($category->image) }}" style="height: 140px !important" class="img-responsive"
+                            alt="">
+                    </a>
+                    <h6 style="font-weight: bold">{{ $category->name }}</h6>
+                    <p>{!! $category->details !!}</p>
                 </div>
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal18" class="offer-img">
-                            <img src="images/of17.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html"> Lady Finger</a>(250 g)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$5.00</label><em class="item_price">$4.50</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="4.50" data-quantity="1"
-                                    data-image="images/of17.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal19" class="offer-img">
-                            <img src="images/of18.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html"> Ribbon</a>(1 pc)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="3.50" data-quantity="1"
-                                    data-image="images/of18.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal20" class="offer-img">
-                            <img src="images/of19.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html">Grapes</a>(500 g)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$1.00</label><em class="item_price">$0.80</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="0.80" data-quantity="1"
-                                    data-image="images/of19.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal21" class="offer-img">
-                            <img src="images/of20.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html">Clips</a>(1 pack)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$7.00</label><em class="item_price">$6.00</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="6.00" data-quantity="1"
-                                    data-image="images/of20.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal22" class="offer-img">
-                            <img src="images/of21.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html">Conditioner</a>(250 g)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$5.00</label><em class="item_price">$4.50</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="4.50" data-quantity="1"
-                                    data-image="images/of21.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal23" class="offer-img">
-                            <img src="images/of22.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html">Cleaner</a>(250 kg)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="3.50" data-quantity="1"
-                                    data-image="images/of22.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal24" class="offer-img">
-                            <img src="images/of23.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <h6><a href="single.html">Gel</a>(150 g)</h6>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>$1.00</label><em class="item_price">$0.80</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="0.80" data-quantity="1"
-                                    data-image="images/of23.png">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            @endforeach
         </div>
     </div>
 

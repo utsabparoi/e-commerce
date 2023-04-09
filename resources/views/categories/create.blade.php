@@ -42,6 +42,9 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Image </label>
                     <input name="image" type="file" class="form-control">
+                    @if($errors->has('image'))
+                      <span class="text-danger">{{ $errors->first('image') }}</span>
+                    @endif
                   </div>
                   <div>
                     <label for="exampleInputEmail1">Details</label>

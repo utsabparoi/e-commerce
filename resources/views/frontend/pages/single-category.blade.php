@@ -34,7 +34,7 @@
     <div class="kic-top ">
         <div class="container ">
             <div class="kic ">
-                <h3>Latest Categories</h3>
+                <h3>Popular Categories</h3>
 
             </div>
             @foreach ($popular_categories as $category)
@@ -73,7 +73,7 @@
 
                             <div class="mid-1">
                                 <div class="women">
-                                    <h6><a href="single.html">{{ $item->name }}</a>(500 g)</h6>
+                                    <h6><a href="single.html">{{ $item->name }}</a></h6>
                                 </div>
                                 <div class="mid-2">
                                     <p><label>{{ $item->retail_price }}tk</label><em
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="add">
                                     <button class="btn btn-danger my-cart-btn my-cart-b" data-id="{{ $item->id }}" data-name="{{$item->name}}"
-                                        data-summary="summary 24" data-price="{{ $item->cost_price }}" data-quantity="1"
+                                        data-summary="summary 24" data-price="{{ $item->retail_price }}" data-quantity="1"
                                         data-image="{{ asset($item->image) }}">Add to Cart</button>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7 span-1 ">
-                                        <h3>{{ $item->name }}(500 g)</h3>
+                                        <h3>{{ $item->name }}</h3>
                                         <p class="in-para"> There are many variations of this product.
                                         </p>
                                         <div class="price_single">

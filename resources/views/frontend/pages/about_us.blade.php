@@ -29,7 +29,7 @@
                     <p>{!! $about_us->description !!}</p>
                 </div>
                 <div class="col-md-4 about-right">
-                    <img class="img-responsive" src="{{ asset($about_us->image) }}" alt="Not Found">
+                    <img width="180px" class="img-responsive" src="{{ asset($about_us->image) }}" alt="Not Found">
                 </div>
 
                 <div class="clearfix"> </div>

@@ -15,6 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data['popular_categories'] = Category::orderBy('id','asc')->paginate(9);
+        $data['new_arrivals'] = Product::with('category')->where('status', 1)->latest()->paginate(12);
         $data['category_offers'] = Category::orderBy('id','asc')->paginate(4);
 
         return view('frontend.welcome', $data);

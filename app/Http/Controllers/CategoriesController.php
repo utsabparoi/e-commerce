@@ -41,7 +41,8 @@ class CategoriesController extends Controller
     {
         //form validation
         $this->validate($request, [
-            'name'  =>  'required|min:2|max:50|unique:categories'
+            'name'  =>  'required|min:2|max:50|unique:categories',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
         ]);
 
         try {
@@ -89,7 +90,8 @@ class CategoriesController extends Controller
     {
         //form validation
         $this->validate($request, [
-            'name'  =>  'required|min:2|max:50|unique:categories,name,' . $id
+            'name'  =>  'required|min:2|max:50|unique:categories,name,' . $id,
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
         ]);
 
         try {
