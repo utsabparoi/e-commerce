@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         if ( !app()->runningInConsole() ){
             $data['categories'] = Category::orderBy('id','asc')->get();
+            $data['popular_categories'] = Category::orderBy('id','asc')->paginate(9);
+            $data['new_arrivals'] = Product::with('category')->where('status', 1)->latest()->paginate(12);
             View::Share($data);
         }
     }
