@@ -76,7 +76,7 @@
                                     <h6><a href="single.html">{{ $item->name }}</a></h6>
                                 </div>
                                 <div>
-                                    <p><label>{{ $item->retail_price }}tk</label></p>
+                                    <p><label>৳ {{ $item->retail_price }}</label></p>
                                     <div class="block">
                                         <div class="starbox small ghosting"> </div>
                                     </div>
