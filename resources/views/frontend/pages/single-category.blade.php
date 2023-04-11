@@ -75,9 +75,8 @@
                                 <div class="women">
                                     <h6><a href="single.html">{{ $item->name }}</a></h6>
                                 </div>
-                                <div class="mid-2">
-                                    <p><label>{{ $item->retail_price }}tk</label><em
-                                            class="item_price">{{ $item->cost_price }}tk</em></p>
+                                <div>
+                                    <p><label>{{ $item->retail_price }}tk</label></p>
                                     <div class="block">
                                         <div class="starbox small ghosting"> </div>
                                     </div>
